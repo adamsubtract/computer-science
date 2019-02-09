@@ -1,0 +1,69 @@
+1.
+
+// a)
+//
+var line =  ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+// b)
+//
+line.push('Mary');
+
+console.log(line);
+
+// c)
+//
+function findJosh(array){
+  return array.indexOf('Josh');
+}
+
+console.log(findJosh(line));
+
+// d)
+//
+function findEmily(array){
+
+    var isName = false;
+
+    var Emily = 'Emily';
+
+    // search array for Emily
+    for(i = 0; i < array.length; i++){
+       if(array[i] === Emily){ isName = true; };
+    }
+
+
+    if(isName){
+      return 'Found' + Emily;
+    }
+    else return 'Could not find Emily';
+}
+
+console.log(findEmily(line));
+
+// e)
+//
+function cutInLine (array){
+
+  var avaSpot = array.indexOf('Ava');
+  array.splice(avaSpot, 0, 'Melissa');
+
+  return array;
+}
+
+console.log(cutInLine(line));
+
+// f)
+//
+
+function removePatrick(array){
+  var patrickSpot = array.indexOf('Patrick');
+  array.splice(patrickSpot, 1);
+  return array;
+}
+
+console.log(removePatrick(line));
+
+
+2. Race car or leaderboards
+
+3. by storing it in a clear/ easy way.
