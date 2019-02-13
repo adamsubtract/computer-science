@@ -1,0 +1,156 @@
+Exercises
+
+  1. What are some pros and cons of using linked lists instead of arrays?
+
+    Pros: efficient memory storing, dynamic in size, can be stored in different types of memory,
+          can use any available memory, does not waste memory.
+
+    Cons: Because linked lists are not indexed like arrays, to search for a node
+          you have to start at the beginning of the list, every time, and search
+          through the rest in chronological order every time. No random access
+          to data.
+
+  2. Come up with a real world example of a linked list.
+
+    "The simplest and most straightforward is a train.
+    Train cars are linked in a specific order so that they may be loaded and
+    unloaded, transferred, dropped off, and picked up in the most efficient
+    manner possible."
+
+
+Programming Questions
+
+  1. The linked list push function should take a value, create a node, and add it
+     to the end of a list. Below is pseudocode for a push function for a singly
+     linked list. However, there is something wrong with it. Submit both an
+     explanation of the bug and a functional implementation of the method.
+
+     The push function was missing a while loop in the else method. This was
+     needed to check if was at the end of the linked list.
+
+     function push(element) {
+        var node;
+        node.value = element;
+        node.next = null;
+
+        if (this.head === null) {
+           this.head = node;
+        }
+        else {
+           var current = this.head;
+           while (current.next !== null) {
+              current = current.next;
+           }
+           current.next = node;
+        {
+     }
+
+  2. Given an unsorted singly linked list, remove all duplicates from the linked
+     list.
+
+     class Node {
+       constructor(value) {
+         this.value = value;
+         this.next = null;
+       }
+     }
+
+     class LinkedList {
+       constructor() {
+         this.head = null;
+       }
+
+       insert(value) {
+         var newNode = new Node(value);
+
+         if (this.head === null) {
+           this.head = newNode;
+         } else {
+           var current = this.head;
+
+           while (current.next !== null) {
+             current = current.next;
+           }
+
+           current.next = newNode;
+         }
+       }
+
+          removeDuplicates() {
+            if (!this.head || !this.head.next) {
+         	console.log('No duplicates found');
+         	return;
+       		}
+
+     		var pointer1;
+     		var pointer2;
+     		var pointer3;
+     		var value;
+     		pointer2 = this.head;
+
+     		while (pointer2) {
+     			value = pointer2.value;
+     			pointer1 = pointer2;
+     			pointer3 = pointer1.next;
+
+     			while (pointer3) {
+     				if (pointer3.value === value) {
+     					pointer1.next = pointer3.next;
+     				} else {
+     					pointer1 = pointer3;
+     				}
+     				pointer3 = pointer3.next;
+     			}
+     			pointer2 = pointer2.next;
+     		}
+        }
+
+       print() {
+         var current = this.head;
+
+         while(current !== null) {
+           console.log(current.value);
+           current = current.next;
+         }
+       }
+     }
+
+
+  3. Given an unsorted singly linked list, reverse it.
+
+
+
+     class Node {
+       constructor(value) {
+         this.value = value;
+         this.next = null;
+       }
+     }
+
+     class Stack {
+       constructor() {
+         this.top = null;
+       }
+
+       push(value) {
+         var newNode = new Node(value);
+
+         newNode.next = this.top;
+
+         this.top = newNode;
+       }
+
+       pop(){
+         var temp = this.top;
+
+         this.top =  temp.next;
+
+         return temp;
+       }
+
+       print() {
+         while (this.top !== null) {
+           console.log(this.pop().value);
+         }
+       }
+     }
