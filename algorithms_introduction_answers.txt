@@ -1,0 +1,10 @@
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee;
+
+-
+
+
+
+Washing dishes;
+A choice of your own.
