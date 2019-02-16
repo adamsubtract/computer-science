@@ -47,4 +47,71 @@ Programming Questions:
    mirror the functionality of a LIFO data structure. Since the internal list is not
    the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
 
-   
+   class Stack {
+      constructor(){
+
+        this.pop = function(queue){
+
+        var newQueue = [];
+
+        var itemToRemove = [];
+
+        for(var i=0;i<queue.length; i++){
+           if(i==queue.length-1){
+               itemToRemove.push(queue[i]);
+           }
+
+           else{
+           newQueue.push(queue[i]);
+           }
+         }
+
+      return itemToRemove;
+
+        }
+      }
+   }
+
+
+    var stack = new Stack();
+    console.log(stack.pop('Adam'));
+
+ 3. Implement the enqueue and dequeue methods defined in the checkpoint inside
+    your own Queue class.
+
+    class Queue {
+   constructor(){
+     this.elements = []
+   }
+
+ // enqueue function
+
+  enqueue(element)
+{
+    this.elements.push(element);
+}
+
+  // dequeue function
+
+  dequeue()
+{
+    if(this.isEmpty())
+        return "Empty";
+    return this.elements.shift();
+}
+
+isEmpty()
+{
+    return this.elements.length ==0;
+}
+
+}
+
+var queue = new Queue();
+
+queue.enqueue(10)
+queue.enqueue(10)
+
+console.log(queue)
+queue.dequeue()
+console.log(queue)
