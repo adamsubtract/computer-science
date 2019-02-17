@@ -31,10 +31,176 @@
    and phone number into the system and look up customers using their phone numbers.
    Store this information in a hash table.
 
+   var hash = (string, max) => {
+  var hash = 0;
+  for (var i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+};
+
+let HashTable = function() {
+
+  let storage = [];
+  const storageLimit = 100;
+
+  this.add = function(key,value) {
+    var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [key,value]
+      ];
+    } else {
+      var inserted = false;
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (inserted === false) {
+        storage[index].push([key,value]);
+      }
+    }
+  };
+
+  this.lookup = function(key) {
+    var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+  };
+
+};
+
+var ht = new HashTable();
+ht.add(99999,{name:'Joe', address:' 500 Tree St.'})
+ht.add(1000,{name:'John',address:'200 Toronto Ave.'});
+ht.add(5000,{name:'Mike',address:'354 Gerard St.'});
+
+console.log(ht.lookup(99999));
+console.log(ht.lookup(5000));
+console.log(ht.lookup(1000));
+
+
 7. Build a system that allows a store owner to track their store's inventory using
    a hash table for storage.
+
+   var hash = (string,max) =>{
+  var hash= 0
+  for(var i=0; i<string.length;i++){
+    hash += string.charCodeAt(i)
+  }
+  return hash % max;
+};
+
+let HashTable = function(){
+ let storage = [];
+ const storageLimit= 5;
+
+
+ this.add = function(key, value) {
+    var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [key, value]
+      ];
+    } else {
+      var inserted = false;
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (inserted === false) {
+        storage[index].push([key, value]);
+      }
+    }
+  };
+
+  this.search = function(key) {
+    var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+  };
+
+};
+
+var ht = new HashTable();
+ht.add('Fiction books',1000);
+ht.add('Horror books',500);
+ht.add('Comic books', 300);
+ht.add('Romance',210);
+
+ht.search('Romance')
 
 8. Build a system that allows digital copies of newspapers to be entered and searched
    by publisher and publication date. Use hash tables to store the necessary data.
 
-   
+//Hash Function
+let hash = (string, max)=> {
+  var hash = 0;
+  for(var i=0; i< string.length;i++){
+    hash+= string.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+class Newspaper {
+  constructor() {
+    this.storage = [];
+    this.storageLimit = 60;
+  }
+
+  add(publisher, pubDate) {
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    let data = [publisher, pubDate];
+      if (this.storage[index] === undefined) {
+        this.storage[index] = [ ];
+    }
+    this.storage[index].push(data);
+    }
+
+  search(publisher, pubDate) {
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    let result = [];
+
+    if (!this.storage[index]) { return 'No results were found for this search' }
+      this.storage[index].forEach(entry => {
+       if (entry[0] === publisher && entry[1] === pubDate) {
+        result.push(entry);
+      }
+    })
+    return result;
+  }
+}
+
+
+let news = new Newspaper();
+news.add('Pragmatic Bookshelf', '2009');
+news.add('St.Martins', '1990');
+news.add('St.Martin','2008');
+news.add('Pragmatic Publications', '2006');
+news.add('Oxford', '2018');
+
+console.log(news.search('Pragmatic Bookshelf', '2009'));
+console.log(news.search('St.Martins', '1990'));
+console.log(news.search('Pragmatic Bookshelf', '2009'));
+console.log(news.search('Pragmatic Publications', '2006'));
+console.log(news.search('humma'))
