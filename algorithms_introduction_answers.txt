@@ -1,0 +1,78 @@
+##Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee
+```FUNCTION
+  IF coffee filter is in filter basket THEN
+    IF amount of coffee grounds is enough for 1 cup THEN
+      WHILE coffee is not brewed
+        keep brewing coffee
+      END WHILE
+      PRINT coffee
+    END IF
+  END IF
+END FUNCTION```
+
+Washing dishes
+```FUNCTION
+  WHILE sink is not filled up with water
+    Increment water
+  END WHILE
+  ADD soap to water
+  IF water has soap
+    FOR each dirty dish
+      put dish in sink and wash
+    END FOR
+  END IF
+  FOR each dish that's in the sink
+    IF dish is clean
+      rinse dish
+      dry dish
+      put dish up
+    END IF
+  END FOR
+END FUNCTION```
+
+>A choice of your own.
+Making a peanut butter sandwich
+```FUNCTION
+  IF I have 2 slices of bread
+    put peanut butter on slice 1
+    put jelly on slice 2
+    IF the 2 slices are not plain
+      press the 2 slices together
+      PRINT peanut butter jelly sandwich
+    END IF
+  END IF
+END FUNCTION```
+
+##As with the knot algorithm, there may be more than one way to solve the problem.
+It is essential to try to pick the best algorithm for a situation.
+Name three companies who created an algorithm that made them successful, e.g.,
+Google's search algorithm.
+It doesn't need to be a tech example (such as a recipe or manufacturing a product).
+Google's algorithm produces more relevant results than other search engines;
+what about each of your cases make them stand out?
+
+A: Nike, McDonald's, Disney
+Nike made their shoe manufacturing and their marketing an algorithm, and they
+make shoes that appeal to a wider range of people.
+McDonald's make an algorithm to make burgers fast. McDonald's makes getting
+lunch a fast and more convenient than
+sit down restaurants.
+Disney has developed an algorithm to make Marvel superhero movies. Disney's
+superhero movies get the most praises from fans
+because their movies have a great balance of action, suspense, and comedy.
+
+##Hypothesize about what constitutes an efficient algorithm versus an inefficient
+algorithm.
+A:
+An efficent algorithm is made by having clear steps throught the entire process.
+It minimizes errors, and when errors do happen
+they are taken care of efficiently without disrupting the main formula. In the
+other hand, an inefficient algorithm is one that
+takes extra unnecessary steps, produces results in longer intervals and the
+final product might not always be as good as it could be.
+It also has a tendecy to produce a higher rate of mistakes during the steps and
+when errors happen, they are not solved fast and
+sometimes those errors may affect the main process by slowing it down even further
+or expose its weaknesses.
