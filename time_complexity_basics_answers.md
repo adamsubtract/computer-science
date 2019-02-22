@@ -48,7 +48,7 @@ END FUNCTION
 ```
 O(n^2);
 
-## Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence. 
+## Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
 
 ```
 IF number < 1 THEN
@@ -61,6 +61,8 @@ IF number < 1 THEN
    RETURN twoBack + oneBack
  END IF
 ```
+
+O(2^n);
 
 ## Out of the code snippets you just saw, which is the most time efficient?
 The first one.
