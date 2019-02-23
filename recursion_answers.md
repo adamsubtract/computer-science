@@ -55,14 +55,5 @@ console.log(CheckPalindrom("madam"));
 
 ## Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
 
-var houses = ["Tom's", "Kelly's", "Brad's", "Steven's", "Mark's"];
-
-function CheckHouses(houses){
-	if(houses.length === 0){
-		return "All houses checked";
-	} else {
-		return CheckHouses(houses.slice(1));
-	}
-}
-
-console.log(CheckHouses(houses));
+This is like recursion because we keep clicking on "did you mean" and when we
+do that its like we are running the same function again and again and again.
