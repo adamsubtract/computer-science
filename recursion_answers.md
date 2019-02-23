@@ -20,7 +20,7 @@ They all have base cases that filter the data coming through, they all used if/e
 statements, and for loops.
 
 ## Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
-
+```
 var arrayOfArrays = [[1,2,3],[4,5,6],[7, [8, 9],[[10, 11, 12],[13, 14, 15], 16]]];
 var count = 0;
 
@@ -36,9 +36,10 @@ function countArrayItems(arr){
 }
 
 console.log(countArrayItems(arrayOfArrays));
+```
 
 ## A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
-
+```
 function CheckPalindrom(word){
   if (word.length <= 1) {
     return true;
@@ -52,6 +53,7 @@ function CheckPalindrom(word){
 console.log(CheckPalindrom("racecar"));
 console.log(CheckPalindrom("bloc!"));
 console.log(CheckPalindrom("madam"));
+```
 
 ## Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
 
