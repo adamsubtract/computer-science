@@ -75,30 +75,112 @@
    variable to it. I would run both n1 and n2 through the search function, get the
    distance (or dummy variable), ad them together and return that number.
 
-   function nodeDistance(n1, n2){
-
-       function distance(data) {
-         let current = this.root;
-         var i = 0
-         while (current) {
-           if (data === current.data) {
-             return i;
-           }
-           else if (data < current.data) {
-             current = current.left;
-             i++;
-           } else {
-             current = current.right;
-             i++;
-           }
-         }
-         return false;
-       }
-
-       var node1 = distance(n1);
-       var node2 = distance(n2);
-
-       var total = node1 + node2;
-
-       return 'the distance is ' + total;
+```
+   class TreeNode {
+     constructor(data) {
+       this.data = data;
+       this.left = null;
+       this.right = null;
+     }
    }
+
+   class Tree {
+     constructor() {
+       this.root = null;
+     }
+
+     searchNode(data) {
+       let current = this.root;
+       while (current) {
+         if (data === current.data) {
+           return true;
+         }
+         else if (data < current.data) {
+           current = current.left;
+         } else {
+           current = current.right;
+         }
+       }
+       return false;
+     }
+
+    nodeDistance(n1, n2){
+
+          function distance(current, data) {
+            var i = 0
+            while (current) {
+              if (data === current.data) {
+                return i;
+              }
+              else if (data < current.data) {
+                current = current.left;
+                i++;
+              } else {
+                current = current.right;
+                i++;
+              }
+            }
+            return false;
+          }
+
+          function findLCA(root, n1, n2) {
+            var current = root;
+            while (current) {
+              if (n1 < current.data && n2 < current.data) {
+                current = current.left;
+              } else if (n1 > current.data && n2 > current.data) {
+                current = current.right;
+              } else {
+                return current;
+              }
+            }
+          }
+
+          var lca = findLCA(this.root, n1, n2);
+          var node1 = distance(lca, n1);
+          var node2 = distance(lca, n2);
+
+          if (node1 !== false && node2 !== false) {
+            var total = node1 + node2;
+
+            return 'the distance is ' + total;
+          } else {
+            return false;
+          }
+      }
+   }
+
+   /*
+        9
+       / \
+      5   11
+     / \
+    1   6
+
+   */
+
+   let node6 = new TreeNode(6),
+       node1 = new TreeNode(1),
+       node5 = new TreeNode(5),
+       node9 = new TreeNode(9),
+       node11 = new TreeNode(11);
+
+   node9.left = node5;
+   node9.right = node11;
+   node5.left = node1;
+   node5.right = node6;
+
+   let tree = new Tree();
+   tree.root = node9;
+
+
+   console.log(tree.searchNode(9));
+   console.log(tree.searchNode(1));
+   console.log(tree.searchNode(11));
+   console.log(tree.searchNode(13));
+   console.log(tree.searchNode(2));
+
+   console.log(tree.nodeDistance(1, 6));
+   console.log(tree.nodeDistance(1, 5));
+   console.log(tree.nodeDistance(34, 9));
+   ```
