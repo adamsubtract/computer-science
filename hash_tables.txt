@@ -206,14 +206,14 @@
 
 
       let news = new Newspaper();
-      news.add('Pragmatic Bookshelf', '2009');
-      news.add('St.Martins', '1990');
-      news.add('St.Martin','2008');
-      news.add('Pragmatic Publications', '2006');
-      news.add('Oxford', '2018');
+      news.add('Pragmatic Bookshelf', 2009);
+      news.add('St.Martins', 1990);
+      news.add('St.Martin',2008);
+      news.add('Pragmatic Publications', 2006);
+      news.add('Oxford', 2018);
 
-      console.log(news.search('Pragmatic Bookshelf', '2009'));
-      console.log(news.search('St.Martins', '1990'));
-      console.log(news.search('Pragmatic Bookshelf', '2009'));
-      console.log(news.search('Pragmatic Publications', '2006'));
+      console.log(news.search('Pragmatic Bookshelf', 2009));
+      console.log(news.search('St.Martins', 1990));
+      console.log(news.search('Pragmatic Bookshelf', 2009));
+      console.log(news.search('Pragmatic Publications', 2006));
       console.log(news.search('humma'));
