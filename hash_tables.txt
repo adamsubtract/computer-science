@@ -31,195 +31,195 @@
    and phone number into the system and look up customers using their phone numbers.
    Store this information in a hash table.
 
-      var hash = (string, max) => {
-     var hash = 0;
-     for (var i = 0; i < string.length; i++) {
-       hash += string.charCodeAt(i);
+var hash = (string, max) => {
+var hash = 0;
+for (var i = 0; i < string.length; i++) {
+ hash += string.charCodeAt(i);
+}
+return hash % max;
+};
+
+let HashTable = function() {
+
+ let storage = [];
+ const storageLimit = 100;
+
+ this.add = function(key,value) {
+   var index = hash(key, storageLimit);
+   if (storage[index] === undefined) {
+     storage[index] = [
+       {
+         key: key,
+         value: value
+       }
+     ];
+   } else {
+     var inserted = false;
+     for (var i = 0; i < storage[index].length; i++) {
+       if (storage[index][i].key === key) {
+         storage[index][i].value = value;
+         inserted = true;
+       }
      }
-     return hash % max;
-   };
+     if (inserted === false) {
+       storage[index].push({key: key, value: value});
+     }
+   }
+ };
 
-   let HashTable = function() {
-
-     let storage = [];
-     const storageLimit = 100;
-
-     this.add = function(key,value) {
-       var index = hash(key, storageLimit);
-       if (storage[index] === undefined) {
-         storage[index] = [
-           {
-             key: key,
-             value: value
-           }
-         ];
-       } else {
-         var inserted = false;
-         for (var i = 0; i < storage[index].length; i++) {
-           if (storage[index][i].key === key) {
-             storage[index][i].value = value;
-             inserted = true;
-           }
-         }
-         if (inserted === false) {
-           storage[index].push({key: key, value: value});
-         }
+ this.lookup = function(key) {
+   var index = hash(key, storageLimit);
+   if (storage[index] === undefined) {
+     return undefined;
+   } else {
+     for (var i = 0; i < storage[index].length; i++) {
+       if (storage[index][i].key === key) {
+         return storage[index][i].value;
        }
-     };
+     }
+   }
+ };
 
-     this.lookup = function(key) {
-       var index = hash(key, storageLimit);
-       if (storage[index] === undefined) {
-         return undefined;
-       } else {
-         for (var i = 0; i < storage[index].length; i++) {
-           if (storage[index][i].key === key) {
-             return storage[index][i].value;
-           }
-         }
-       }
-     };
+};
 
-   };
-
-   var ht = new HashTable();
-   ht.add(99999,{name:'Joe', address:' 500 Tree St.'})
-   ht.add(1000,{name:'John',address:'200 Toronto Ave.'});
-   ht.add(5000,{name:'Mike',address:'354 Gerard St.'});
+var ht = new HashTable();
+ht.add(99999,{name:'Joe', address:' 500 Tree St.'})
+ht.add(1000,{name:'John',address:'200 Toronto Ave.'});
+ht.add(5000,{name:'Mike',address:'354 Gerard St.'});
 
 
-   console.log(ht.lookup(99999));
-   console.log(ht.lookup(5000));
-   console.log(ht.lookup(1000));
+console.log(ht.lookup(99999));
+console.log(ht.lookup(5000));
+console.log(ht.lookup(1000));
 
 
-   7. Build a system that allows a store owner to track their store's inventory using
-      a hash table for storage.
+7. Build a system that allows a store owner to track their store's inventory using
+a hash table for storage.
 
-      var hash = (string, max) => {
-        var hash = 0
-        for (var i = 0; i < string.length; i++) {
-          hash += string.charCodeAt(i)
+var hash = (string, max) => {
+  var hash = 0
+  for (var i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i)
+  }
+  return hash % max;
+};
+
+let HashTable = function() {
+  let storage = [];
+  const storageLimit = 5;
+
+
+  this.add = function(data) {
+    var index = hash(data.name, storageLimit);
+    if (storage[index] === undefined) {
+      storage[index] = [data];
+    } else {
+      var inserted = false;
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i].name === data) {
+          storage[index][i] = data;
+          inserted = true;
         }
-        return hash % max;
-      };
+      }
+      if (inserted === false) {
+        storage[index].push(data);
+      }
+    }
+  };
 
-      let HashTable = function() {
-        let storage = [];
-        const storageLimit = 5;
+  this.search = function(key) {
+    var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i].name === key) {
+          return storage[index][i];
+        }
+      }
+    }
+  };
 
+};
 
-        this.add = function(data) {
-          var index = hash(data.name, storageLimit);
-          if (storage[index] === undefined) {
-            storage[index] = [data];
-          } else {
-            var inserted = false;
-            for (var i = 0; i < storage[index].length; i++) {
-              if (storage[index][i].name === key) {
-                storage[index][i] = data;
-                inserted = true;
-              }
-            }
-            if (inserted === false) {
-              storage[index].push(data);
-            }
-          }
-        };
+var ht = new HashTable();
+ht.add({
+  name: 'Fiction books',
+  quantity: 1000
+});
+ht.add({
+  name: 'Horror books',
+  quantity: 500
+});
+ht.add({
+  name: 'Comic books',
+  quantity: 300
+});
+ht.add({
+  name: 'Romance',
+  quantity: 210
+});
 
-        this.search = function(key) {
-          var index = hash(key, storageLimit);
-          if (storage[index] === undefined) {
-            return undefined;
-          } else {
-            for (var i = 0; i < storage[index].length; i++) {
-              if (storage[index][i].name === key) {
-                return storage[index][i];
-              }
-            }
-          }
-        };
-
-      };
-
-      var ht = new HashTable();
-      ht.add({
-        category: 'Fiction books',
-        key: 1000
-      });
-      ht.add({
-        category: 'Horror books',
-        key: 500
-      });
-      ht.add({
-        category: 'Comic books',
-        key: 300
-      });
-      ht.add({
-        category: 'Romance',
-        key: 210
-      });
-
-      console.log(ht.search('Comic books'));
-      console.log(ht.search('Horror books'));
-      console.log(ht.search('Fiction books'));
-      console.log(ht.search('Romance'));
+console.log(ht.search('Comic books'));
+console.log(ht.search('Horror books'));
+console.log(ht.search('Fiction books'));
+console.log(ht.search('Romance'));
 
 
-   8. Build a system that allows digital copies of newspapers to be entered and searched
-      by publisher and publication date. Use hash tables to store the necessary data.
+8. Build a system that allows digital copies of newspapers to be entered and searched
+by publisher and publication date. Use hash tables to store the necessary data.
 
-      //Hash Function
-          let hash = (string, max)=> {
-            var hash = 0;
-            for(var i=0; i< string.length;i++){
-              hash+= string.charCodeAt(i);
-            }
-            return hash % max;
-          }
+//Hash Function
+let hash = (string, max)=> {
+  var hash = 0;
+  for(var i=0; i< string.length;i++){
+    hash+= string.charCodeAt(i);
+  }
+  return hash % max;
+}
 
-          class Newspaper {
-            constructor() {
-              this.storage = [];
-              this.storageLimit = 60;
-            }
+class Newspaper {
+  constructor() {
+    this.storage = [];
+    this.storageLimit = 60;
+  }
 
-            add(data) {
-              let key = data.publisher + data.pubDate;
-              let index = hash(key, this.storageLimit);
+  add(data) {
+    let key = data.publisher + data.pubDate;
+    let index = hash(key, this.storageLimit);
 
-              if (this.storage[index] === undefined) {
-                  this.storage[index] = [ ];
-              }
+    if (this.storage[index] === undefined) {
+        this.storage[index] = [ ];
+    }
 
-              this.storage[index].push(data);
-              }
+    this.storage[index].push(data);
+    }
 
-            search(data) {
-              let key = data.publisher + data.pubDate;
-              let index = hash(key, this.storageLimit);
-              let result = null;
+  search(data) {
+    let key = data.publisher + data.pubDate;
+    let index = hash(key, this.storageLimit);
+    let result = null;
 
-              if (!this.storage[index]) { return null }
-                this.storage[index].forEach(entry => {
-                 if (entry.publisher === data.publisher && entry.pubDate === data.pubDate) {
+    if (!this.storage[index]) { return null }
+      this.storage[index].forEach(entry => {
+       if (entry.publisher === data.publisher && entry.pubDate === data.pubDate) {
 
-                   result = entry;
-                }
-              })
-              return result;
-            }
-          }
+         result = entry;
+      }
+    })
+    return result;
+  }
+}
 
 
-          let news = new Newspaper();
-          news.add({publisher: 'Pragmatic Bookshelf', pubDate: 2009, content: 'Hello there everyone'});
-          news.add({publisher: 'St.martins', pubDate: 1990, content: 'Hello'});
-          news.add({publisher: 'St.martins', pubDate: 2008, content: 'St Martin'});
-          news.add({publisher: 'Pragmatic Publications', pubDate: 2006, content: 'IM in here again'});
+let news = new Newspaper();
+news.add({publisher: 'Pragmatic Bookshelf', pubDate: 2009, content: 'Hello there everyone'});
+news.add({publisher: 'St.martins', pubDate: 1990, content: 'Hello'});
+news.add({publisher: 'St.martins', pubDate: 2008, content: 'St Martin'});
+news.add({publisher: 'Pragmatic Publications', pubDate: 2006, content: 'IM in here again'});
 
-          console.log(news.search({publisher: 'Pragmatic Bookshelf', pubDate: 2009}));
-          console.log(news.search({publisher: 'St.Martins', pubDate: 1990}));
-          console.log(news.search({publisher: 'Pragmatic Bookshelf', pubDate: 2009}));
-          console.log(news.search({publisher: 'Pragmatic Publications', pubDate: 2006}));
-          console.log(news.search({publisher: 'humma', pubDate: 1982}));
+console.log(news.search({publisher: 'Pragmatic Bookshelf', pubDate: 2009}));
+console.log(news.search({publisher: 'St.Martins', pubDate: 1990}));
+console.log(news.search({publisher: 'Pragmatic Bookshelf', pubDate: 2009}));
+console.log(news.search({publisher: 'Pragmatic Publications', pubDate: 2006}));
+console.log(news.search({publisher: 'humma', pubDate: 1982}));
